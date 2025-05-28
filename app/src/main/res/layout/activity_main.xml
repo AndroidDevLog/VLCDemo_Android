@@ -7,14 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <org.videolan.libvlc.util.VLCVideoLayout
-        android:id="@+id/video_layout"
-        android:layout_width="0dp"
+    <FrameLayout
+        android:id="@+id/video_container"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_play"
+        app:layout_constraintDimensionRatio="848:480"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_play"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <org.videolan.libvlc.util.VLCVideoLayout
+            android:id="@+id/video_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/button_fullscreen"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:background="@drawable/fullscreen_button_background"
+            android:contentDescription="全屏"
+            android:src="@drawable/ic_fullscreen"
+            android:scaleType="centerInside"
+            android:padding="12dp" />
+
+    </FrameLayout>
 
     <Button
         android:id="@+id/button_play"
@@ -24,6 +45,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/video_container"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
